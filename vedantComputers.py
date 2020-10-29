@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 def vedantComputers(component):
     searchUrl = 'https://www.vedantcomputers.com/index.php?route=product/search&search='
+    final_list = {}
     for i in range(len(component)):
         if component[i] == ' ':
             searchUrl += '%20'
@@ -25,7 +26,6 @@ def vedantComputers(component):
             file.write('This product does isnt available at Vedant Computers')
     else:
         product_list = soup.findAll("div", class_ = "product-layout")
-        final_list = {}
         for product in product_list:
             if(product.find('span', class_ = "price-normal")):
                 Product_price = product.find('span', class_ = "price-normal")
